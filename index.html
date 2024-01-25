@@ -6,13 +6,40 @@
     <title>Eksempel 1</title>
     <style>
       body {
-        margin-left: 30px;
+        margin-left: 25px;
+        width: 500px;
       }
       div {
+        text-align: left;  
+      }
+
+      .card {
         background-color: rgb(157, 174, 190);
-        padding: 2px;
-        text-align: left;
-        width: 500px;
+        border: 1px solid
+ 
+      }
+
+      div.innercard {
+        width: 500px
+        padding 10px
+        border 2px solid black 
+      }
+
+      .layout1 {
+        display:flex;
+        align-items: start;
+      }
+      .layout2 {
+        display:flex;
+        align-items: flex-end;
+      }
+      .layout3 {
+        display:flex;
+        align-items: wrap-reverse;
+      }
+      .layout4 {
+        display:grid;
+        grid-template-rows: auto auto;
       }
 
       div.Verktøy {
@@ -22,7 +49,7 @@
         text-align: center;
         user-select: none;
         padding: 2px;
-        border: solid gray 1px;
+        
       }
 
       div.HTML {
@@ -31,6 +58,7 @@
         color: white;
         text-align: center;
         user-select: none;
+        padding: 2px;
       }
 
       div.CSS {
@@ -39,6 +67,7 @@
         color: white;
         text-align: center;
         user-select: none;
+        padding: 2px;
       }
 
       div.JavaScript {
@@ -47,6 +76,7 @@
         color: white;
         text-align: center;
         user-select: none;
+        padding: 2px;
       }
 
       div.HodeKroppogBein {
@@ -55,54 +85,83 @@
         color: white;
         text-align: center;
         user-select: none;
+        padding: 2px;
       }
     </style>
   </head>
 
   <body>
-    <button>Ingen Layout</button>
-    <button>Vertikal Layout</button>
-    <button>Horisontal Layout</button>
-    <button>Grid Layout</button>
+    <button onclick="layout1()">Ingen Layout</button>
+    <button onclick="layout2()">Vertikal Layout</button>
+    <button onclick="layout3()">Horisontal Layout</button>
+    <button onclick="layout4()">Grid Layout</button>
 
     <h1>Hello</h1>
     <br />
-
     <input type text />
     <br />
     <br />
-    <div class="card">
-      <div class="Verktøy" onclick="showVerktøy()">VERKTØY</div>
-      <div id="cardVerktøy"></div>
-    </div>
-    <br />
-
-    <div class="card">
-      <div class="HTML" onclick="showHtml()">HTML</div>
-      <div id="cardHtml"></div>
-    </div>
-    <br />
-
-    <div class="card">
-      <div class="CSS" onclick="showCss()">CSS</div>
-      <div id="cardCss"></div>
-    </div>
-    <br />
-
-    <div class="card">
-      <div class="JavaScript" onclick="showJavaScript()">JavaScript</div>
-      <div id="cardJavaScript"></div>
-    </div>
-    <br />
-
-    <div class="card">
-      <div class="HodeKroppogBein" onclick="showBodyGame()">
-        Hode, Kropp & Ben
+    <div id="container">
+      <div class="card" id="part">
+        <div class="Verktøy" onclick="showVerktøy()">VERKTØY</div>
+        <div id="cardVerktøy"></div>
       </div>
-      <div id="cardGame" class="bodies"></div>
+      <br />
+      
+      
+      
+      <div class="card" id="part">
+        <div class="HTML" onclick="showHtml()">HTML</div>
+        <div id="cardHtml"></div>
+      </div>
+      <br />
+      
+      
+      
+      <div class="card" id="part">
+        <div class="CSS" onclick="showCss()">CSS</div>
+        <div id="cardCss"></div>
+      </div>
+      <br />
+      
+      
+      
+      <div class="card" id="part">
+        <div class="JavaScript" onclick="showJavaScript()">JavaScript</div>
+        <div id="cardJavaScript"></div>
+      </div>
+      <br />
+      
+      <div class="card" id="part">
+        <div class="HodeKroppogBein" onclick="showBodyGame()">
+          Hode, Kropp & Ben
+        </div>
+        <div id="cardGame" class="bodies"></div>
+      </div>
     </div>
+      
 
     <script>
+      function layout1(){
+        document.getElementById("container").classList = [];
+        document.getElementById("container").classList.add('layout1');
+      }
+      
+      function layout2(){
+        document.getElementById("container").classList =[];
+        document.getElementById("container").classList.add('layout2');
+      }
+
+      function layout3(){
+        document.getElementById("container").classList =[];
+        document.getElementById("container").classList.add('layout3');
+      }
+      function layout4(){
+        document.getElementById("container").classList =[];
+        document.getElementById("container").classList.add('layout4');
+      }
+
+
       function emptyall() {
         document.getElementById(`cardVerktøy`).innerHTML = ``;
         document.getElementById(`cardHtml`).innerHTML = ``;
@@ -116,7 +175,7 @@
 
         document.getElementById(`cardVerktøy`).innerHTML =
           /*html*/
-          `<div class=innerCard>
+          `<div class="innerCard">
 
            <br/>
             De to viktigste verktøyene vi skal bruke er disse:
